@@ -3,17 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Misi Pahlawan - Media Pembelajaran Laptop SD Kelas 6</title>
+  <title>Jejak Sang Pahlawan - Media Pembelajaran Interaktif SD Kelas 6</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
   
   <style>
     :root {
-      --primary: #FF4757;
-      --secondary: #FFA502;
-      --accent: #2ED573;
-      --dark: #2F3542;
-      --bg-gradient: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+      --primary: #d9534f;
+      --secondary: #f39c12;
+      --accent: #27ae60;
+      --dark: #2c3e50;
+      --cream: #FFF8E7;
+      --bg-gradient: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #6dd5ed 100%);
     }
 
     * {
@@ -32,15 +33,15 @@
       overflow-x: hidden;
     }
 
-    /* HEADER LAPTOP */
+    /* HEADER */
     header {
-      background: rgba(255, 255, 255, 0.15);
+      background: rgba(255, 255, 255, 0.2);
       backdrop-filter: blur(15px);
-      padding: 12px 40px;
+      padding: 12px 30px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+      border-bottom: 2px solid rgba(255, 255, 255, 0.3);
     }
 
     .logo-title {
@@ -57,8 +58,8 @@
       background: var(--secondary);
       color: #fff;
       border: none;
-      padding: 10px 22px;
-      border-radius: 25px;
+      padding: 8px 18px;
+      border-radius: 20px;
       font-weight: 700;
       cursor: pointer;
       box-shadow: 0 4px 0px #d35400;
@@ -73,27 +74,27 @@
       box-shadow: 0 6px 0px #d35400;
     }
 
-    /* LAYOUT HORISONTAL KHUSUS LAPTOP (2 KOLOM) */
+    /* CONTAINER UTAMA LAPTOP (2 KOLOM HORISONTAL) */
     .laptop-container {
       display: grid;
-      grid-template-columns: 380px 1fr;
-      gap: 25px;
+      grid-template-columns: 350px 1fr;
+      gap: 20px;
       max-width: 1300px;
       width: 95%;
-      margin: 20px auto;
-      height: calc(100vh - 110px);
+      margin: 15px auto;
+      height: calc(100vh - 90px);
     }
 
-    /* PANEL KIRI: ANIMASI PAHLAWAN BERGERAK */
+    /* PANEL KIRI: TOKOH PAHLAWAN */
     .left-panel {
       background: rgba(255, 255, 255, 0.95);
-      border-radius: 25px;
-      padding: 25px;
+      border-radius: 20px;
+      padding: 20px;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: space-between;
-      box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
       border: 4px solid #FFF;
       text-align: center;
     }
@@ -101,46 +102,59 @@
     .panel-title {
       font-family: 'Fredoka One', cursive;
       color: var(--primary);
-      font-size: 1.5rem;
+      font-size: 1.3rem;
     }
 
-    /* CAROUSEL / CARDS ANIMASI PAHLAWAN */
-    .hero-display-box {
+    .hero-box {
       width: 100%;
-      background: #FFF8E7;
+      background: var(--cream);
       border: 3px dashed var(--secondary);
-      border-radius: 20px;
+      border-radius: 18px;
       padding: 15px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .hero-img-animated {
+      width: 160px;
+      height: 200px;
+      object-fit: contain;
+      filter: drop-shadow(0px 8px 12px rgba(0,0,0,0.15));
       animation: float 4s ease-in-out infinite;
     }
 
     @keyframes float {
-      0%, 100% { transform: translateY(0px) rotate(0deg); }
-      50% { transform: translateY(-10px) rotate(1deg); }
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
     }
 
-    .hero-svg-large {
-      width: 100%;
-      height: 200px;
-    }
-
-    .hero-name-tag {
+    .hero-name-badge {
       font-family: 'Fredoka One', cursive;
-      font-size: 1.2rem;
+      font-size: 1.05rem;
       color: var(--dark);
       margin-top: 10px;
       background: #FFF;
-      padding: 6px 15px;
-      border-radius: 15px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      padding: 6px 12px;
+      border-radius: 12px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.08);
+      width: 100%;
     }
 
-    /* PANEL KANAN: KONTEN MATERI & KUIS */
+    .hero-desc-short {
+      font-size: 0.82rem;
+      color: #555;
+      margin-top: 8px;
+      line-height: 1.3;
+      text-align: left;
+    }
+
+    /* PANEL KANAN: NAVIGASI & ISI MATERI */
     .right-panel {
       background: rgba(255, 255, 255, 0.95);
-      border-radius: 25px;
-      padding: 25px 30px;
-      box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+      border-radius: 20px;
+      padding: 20px 25px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
       border: 4px solid #FFF;
       display: flex;
       flex-direction: column;
@@ -149,27 +163,28 @@
 
     .nav-tabs {
       display: flex;
-      gap: 15px;
-      margin-bottom: 20px;
+      gap: 10px;
+      margin-bottom: 15px;
       border-bottom: 2px solid #E4E7EB;
-      padding-bottom: 12px;
+      padding-bottom: 10px;
+      flex-wrap: wrap;
     }
 
     .tab-btn {
       background: #E4E7EB;
       border: none;
-      padding: 12px 25px;
-      border-radius: 20px;
+      padding: 8px 18px;
+      border-radius: 15px;
       font-weight: 700;
       cursor: pointer;
-      font-size: 1rem;
+      font-size: 0.9rem;
       transition: all 0.3s;
     }
 
     .tab-btn.active {
       background: var(--primary);
       color: #FFF;
-      box-shadow: 0 5px 15px rgba(255, 71, 87, 0.4);
+      box-shadow: 0 4px 12px rgba(217, 83, 79, 0.3);
     }
 
     .tab-content {
@@ -180,43 +195,44 @@
     .tab-content.active {
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
-    }
-
-    /* CARDS MATERI LANSCAPE */
-    .ppt-horizontal-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
       gap: 15px;
     }
 
-    .ppt-card {
-      background: #FFF;
-      border-radius: 18px;
-      padding: 18px;
-      border-top: 6px solid var(--primary);
-      box-shadow: 0 5px 15px rgba(0,0,0,0.06);
+    /* CARDS MATERI */
+    .grid-cards {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
     }
 
-    .ppt-card h3 {
+    .card-materi {
+      background: #FFF;
+      border-radius: 15px;
+      padding: 15px;
+      border-left: 5px solid var(--primary);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    }
+
+    .card-materi h3 {
       font-family: 'Fredoka One', cursive;
       color: var(--primary);
-      font-size: 1.1rem;
-      margin-bottom: 8px;
+      font-size: 1rem;
+      margin-bottom: 6px;
     }
 
-    .ppt-card p {
-      font-size: 0.9rem;
-      color: #555;
+    .card-materi ul {
+      padding-left: 18px;
+      font-size: 0.85rem;
+      color: #444;
       line-height: 1.4;
     }
 
     /* KUIS BOX LAPTOP */
     .quiz-box {
-      background: #FFF8E7;
+      background: var(--cream);
       border: 3px dashed var(--secondary);
-      border-radius: 20px;
-      padding: 25px;
+      border-radius: 18px;
+      padding: 20px;
       flex: 1;
       display: flex;
       flex-direction: column;
@@ -224,24 +240,24 @@
     }
 
     .quiz-question {
-      font-size: 1.25rem;
+      font-size: 1.1rem;
       font-weight: 700;
       color: var(--dark);
-      margin-bottom: 15px;
+      margin-bottom: 12px;
     }
 
     .options-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 12px;
+      gap: 10px;
     }
 
     .option-btn {
       background: #FFF;
       border: 2px solid #E4E7EB;
       border-radius: 12px;
-      padding: 12px 18px;
-      font-size: 0.95rem;
+      padding: 10px 15px;
+      font-size: 0.88rem;
       font-weight: 600;
       cursor: pointer;
       text-align: left;
@@ -264,12 +280,6 @@
       color: #FFF !important;
       border-color: #D63031 !important;
     }
-
-    @media (max-width: 900px) {
-      .laptop-container { grid-template-columns: 1fr; height: auto; }
-      .ppt-horizontal-grid { grid-template-columns: 1fr; }
-      .options-grid { grid-template-columns: 1fr; }
-    }
   </style>
 </head>
 <body>
@@ -277,86 +287,116 @@
   <!-- HEADER -->
   <header>
     <div class="logo-title">
-      <i class="fas fa-laptop-code"></i> MISI PAHLAWAN (VERSI LAPTOP)
+      <i class="fas fa-medal"></i> JEJAK SANG PAHLAWAN
     </div>
     <button class="btn-game" onclick="restartQuiz()"><i class="fas fa-redo"></i> Ulangi Kuis</button>
   </header>
 
-  <!-- CONTAINER TAMPILAN HORISONAL (LAPTOP) -->
+  <!-- CONTAINER TAMPILAN LAPTOP -->
   <div class="laptop-container">
     
-    <!-- PANEL KIRI: AVATAR PAHLAWAN BERGERAK -->
+    <!-- PANEL KIRI: TOKOH PAHLAWAN BERGERAK -->
     <div class="left-panel">
-      <h2 class="panel-title">🎮 TOKOH PAHLAWAN</h2>
+      <h2 class="panel-title">⭐ MENELUSURI PAHLAWAN</h2>
       
-      <div class="hero-display-box" id="hero-display">
-        <!-- SVG Imam Bonjol -->
-        <svg class="hero-svg-large" viewBox="0 0 200 220">
-          <circle cx="100" cy="110" r="85" fill="#FCF3CF" />
-          <path d="M 40 80 Q 100 10 160 80 Q 100 60 40 80 Z" fill="#FFFFFF" stroke="#2C3E50" stroke-width="3"/>
-          <ellipse cx="100" cy="115" rx="45" ry="50" fill="#F5CBA7" stroke="#2C3E50" stroke-width="2"/>
-          <circle cx="85" cy="110" r="4" fill="#2C3E50"/><circle cx="115" cy="110" r="4" fill="#2C3E50"/>
-          <path d="M 85 145 Q 100 180 115 145 Z" fill="#2C3E50"/>
-          <path d="M 50 165 L 150 165 L 160 210 L 40 210 Z" fill="#FFFFFF" stroke="#2C3E50" stroke-width="2"/>
-        </svg>
-        <div class="hero-name-tag" id="hero-name">TUANKU IMAM BONJOL</div>
+      <div class="hero-box">
+        <img id="hero-img" class="hero-img-animated" src="https://cdni.iconscout.com/illustration/premium/thumb/pangeran-diponegoro-illustration-download-in-svg-png-gif-file-formats--indonesia-hero-national-day-monument-pack-people-illustrations-6111165.png?f=webp&w=300" alt="Pahlawan">
+        <div class="hero-name-badge" id="hero-name">PANGERAN DIPONEGORO</div>
+        <div class="hero-desc-short" id="hero-desc">
+          <b>Tahun:</b> 1825 - 1830<br>
+          <b>Latar Belakang:</b> Campur tangan Belanda di Keraton Yogyakarta & pemasangan patok jalan sepihak di Tegalrejo.
+        </div>
       </div>
 
       <button class="btn-game" style="background: var(--accent); width: 100%; justify-content: center;" onclick="nextHero()">
-        🔄 Ganti Karakter Pahlawan
+        🔄 Pahlawan Selanjutnya
       </button>
     </div>
 
-    <!-- PANEL KANAN: MATERI & KUIS -->
+    <!-- PANEL KANAN: NAVIGASI & ISI MATERI -->
     <div class="right-panel">
       
       <div class="nav-tabs">
-        <button class="tab-btn active" onclick="switchTab('materi')">📖 Ringkasan Materi</button>
-        <button class="tab-btn" onclick="switchTab('kuis')">🏆 Kuis Interaktif</button>
+        <button class="tab-btn active" onclick="switchTab('tujuan')">🎯 Tujuan</button>
+        <button class="tab-btn" onclick="switchTab('materi')">📖 Materi Dasar</button>
+        <button class="tab-btn" onclick="switchTab('nilai')">❤️ Nilai Perjuangan</button>
+        <button class="tab-btn" onclick="switchTab('kuis')">🏆 Kuis Cepat</button>
       </div>
 
-      <!-- TAB 1: MATERI (3 CARDS HORISONTAL) -->
-      <div id="materi-tab" class="tab-content active">
-        <div class="ppt-horizontal-grid">
-          
-          <div class="ppt-card">
-            <h3><i class="fas fa-star"></i> Pengertian Pahlawan</h3>
-            <p>Pahlawan adalah sosok yang berjasa memperjuangkan kemerdekaan dan membela bangsa dengan keberanian & pengorbanan.</p>
-          </div>
-
-          <div class="ppt-card" style="border-top-color: var(--secondary);">
-            <h3><i class="fas fa-history"></i> Latar Belakang Perjuangan</h3>
-            <p>Penjajahan menyebabkan rakyat menderita. Keadaan ini mendorong para tokoh bersatu melakukan perlawanan membela tanah air.</p>
-          </div>
-
-          <div class="ppt-card" style="border-top-color: var(--accent);">
-            <h3><i class="fas fa-heart"></i> Nilai-Nilai Teladan</h3>
-            <p>Sikap luhur yang wajib diteladani: <strong>Cinta Tanah Air, Keberanian, Pantang Menyerah, dan Persatuan</strong>.</p>
-          </div>
-
-        </div>
-
-        <div style="background: #E8F8F5; padding: 15px; border-radius: 15px; margin-top: 15px; border-left: 5px solid var(--accent);">
-          <strong>💡 Tips Belajar:</strong> Setelah membaca ketiga poin di atas, klik tab <strong>"🏆 Kuis Interaktif"</strong> di atas untuk menguji pemahamanmu!
+      <!-- TAB 1: TUJUAN PEMBELAJARAN -->
+      <div id="tujuan-tab" class="tab-content active">
+        <div class="card-materi" style="border-left-color: var(--secondary);">
+          <h3><i class="fas fa-bullseye"></i> Tujuan Pembelajaran SD Kelas 6</h3>
+          <ul>
+            <li>Mengidentifikasi nama dan informasi dasar pahlawan dengan tepat.</li>
+            <li>Menguraikan latar belakang dan waktu perjuangan pahlawan dengan benar.</li>
+            <li>Menjelaskan cerita perjuangan pahlawan secara runtut dan tepat.</li>
+            <li>Melengkapi informasi sejarah perjuangan pahlawan secara lengkap dan sistematis.</li>
+            <li>Menyimpulkan nilai-nilai perjuangan pahlawan yang dapat diterapkan sehari-hari.</li>
+          </ul>
         </div>
       </div>
 
-      <!-- TAB 2: KUIS INTERAKTIF -->
+      <!-- TAB 2: MATERI DASAR -->
+      <div id="materi-tab" class="tab-content">
+        <div class="grid-cards">
+          <div class="card-materi">
+            <h3><i class="fas fa-user-shield"></i> Pahlawan itu Apa?</h3>
+            <p style="font-size: 0.85rem; color:#444;">Sosok yang berjasa memperjuangkan kemerdekaan dan mempertahankan bangsa Indonesia.</p>
+          </div>
+          <div class="card-materi" style="border-left-color: var(--secondary);">
+            <h3><i class="fas fa-hourglass-half"></i> Kondisi Sebelum Merdeka</h3>
+            <p style="font-size: 0.85rem; color:#444;">Rakyat mengalami tekanan, kesulitan, dan kehilangan kebebasan akibat penjajahan.</p>
+          </div>
+          <div class="card-materi" style="border-left-color: var(--accent);">
+            <h3><i class="fas fa-fist-raised"></i> Bentuk Perjuangan</h3>
+            <p style="font-size: 0.85rem; color:#444;">Memimpin perlawanan daerah, menggerakkan semangat rakyat, dan berjuang melalui berbagai cara demi tanah air.</p>
+          </div>
+          <div class="card-materi" style="border-left-color: #3498db;">
+            <h3><i class="fas fa-flag"></i> Latar Belakang Perjuangan</h3>
+            <p style="font-size: 0.85rem; color:#444;">Keinginan kuat melawan penjajahan, membela hak rakyat, dan mempertahankan wilayah untuk meraih kebebasan.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB 3: NILAI-NILAI PERJUANGAN -->
+      <div id="nilai-tab" class="tab-content">
+        <div class="grid-cards">
+          <div class="card-materi">
+            <h3>🇮🇩 Cinta Tanah Air</h3>
+            <p style="font-size: 0.85rem; color:#444;">Bangga dan peduli pada bangsa Indonesia.</p>
+          </div>
+          <div class="card-materi" style="border-left-color: var(--secondary);">
+            <h3>🦁 Keberanian & Pantang Menyerah</h3>
+            <p style="font-size: 0.85rem; color:#444;">Berani menghadapi kesulitan tanpa ragu & tetap bangkit meski gagal.</p>
+          </div>
+          <div class="card-materi" style="border-left-color: var(--accent);">
+            <h3>🤝 Persatuan & Pengorbanan</h3>
+            <p style="font-size: 0.85rem; color:#444;">Bekerja sama, menjaga kebersamaan, serta tulus memberikan waktu & tenaga.</p>
+          </div>
+          <div class="card-materi" style="border-left-color: #9b59b6;">
+            <h3>🎒 Meneladani Pahlawan Sehari-hari</h3>
+            <p style="font-size: 0.85rem; color:#444;">Belajar tekun, disiplin, membantu teman, aktif berdiskusi kelompok, dan bertanggung jawab.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB 4: KUIS CEPAT (SOAL DARI PDF) -->
       <div id="kuis-tab" class="tab-content">
         <div class="quiz-box" id="quiz-box-content">
           <div>
-            <div style="display:flex; justify-content:space-between; margin-bottom:12px; font-weight:bold;">
+            <div style="display:flex; justify-content:space-between; margin-bottom:10px; font-weight:bold;">
               <span id="question-number">Soal 1 / 3</span>
               <span id="score-display" style="color: var(--primary);">Skor: 0</span>
             </div>
 
             <div class="quiz-question" id="question-text">
-              Siapakah sosok yang dinamakan Pahlawan?
+              Taktik perang yang digunakan oleh Pangeran Diponegoro untuk melawan pasukan Belanda adalah...
             </div>
           </div>
 
           <div class="options-grid" id="options-container">
-            <!-- Option buttons rendered via JS -->
+            <!-- Pilihan Jawaban via JS -->
           </div>
         </div>
       </div>
@@ -366,38 +406,27 @@
   </div>
 
   <script>
-    // CAROUSEL PAHLAWAN PANEL KIRI
+    // DATA PAHLAWAN DARI FILE PDF
     const heroesList = [
       {
-        nama: "TUANKU IMAM BONJOL",
-        svg: `<svg class="hero-svg-large" viewBox="0 0 200 220">
-                <circle cx="100" cy="110" r="85" fill="#FCF3CF" />
-                <path d="M 40 80 Q 100 10 160 80 Q 100 60 40 80 Z" fill="#FFFFFF" stroke="#2C3E50" stroke-width="3"/>
-                <ellipse cx="100" cy="115" rx="45" ry="50" fill="#F5CBA7" stroke="#2C3E50" stroke-width="2"/>
-                <circle cx="85" cy="110" r="4" fill="#2C3E50"/><circle cx="115" cy="110" r="4" fill="#2C3E50"/>
-                <path d="M 85 145 Q 100 180 115 145 Z" fill="#2C3E50"/>
-                <path d="M 50 165 L 150 165 L 160 210 L 40 210 Z" fill="#FFFFFF" stroke="#2C3E50" stroke-width="2"/>
-              </svg>`
+        nama: "PANGERAN DIPONEGORO",
+        img: "https://cdni.iconscout.com/illustration/premium/thumb/pangeran-diponegoro-illustration-download-in-svg-png-gif-file-formats--indonesia-hero-national-day-monument-pack-people-illustrations-6111165.png?f=webp&w=300",
+        desc: "<b>Tahun:</b> 1825 - 1830<br><b>Latar Belakang:</b> Campur tangan Belanda di Keraton Yogyakarta & pemasangan patok jalan sepihak di Tegalrejo."
       },
       {
         nama: "BUNG TOMO",
-        svg: `<svg class="hero-svg-large" viewBox="0 0 200 220">
-                <circle cx="100" cy="110" r="85" fill="#D5F5E3" />
-                <path d="M 50 70 L 150 70 L 140 40 L 60 40 Z" fill="#1E8449" stroke="#2C3E50" stroke-width="2"/>
-                <ellipse cx="100" cy="115" rx="45" ry="50" fill="#F5CBA7" stroke="#2C3E50" stroke-width="2"/>
-                <circle cx="85" cy="110" r="4" fill="#2C3E50"/><circle cx="115" cy="110" r="4" fill="#2C3E50"/>
-                <path d="M 40 165 L 160 165 L 170 210 L 30 210 Z" fill="#27AE60" stroke="#2C3E50" stroke-width="2"/>
-              </svg>`
+        img: "https://cdni.iconscout.com/illustration/premium/thumb/bung-tomo-illustration-download-in-svg-png-gif-file-formats--indonesian-hero-surabaya-battle-pack-people-illustrations-6111167.png?f=webp&w=300",
+        desc: "<b>Tahun:</b> 1945<br><b>Latar Belakang:</b> Penolakan rakyat Surabaya terhadap ultimatum Sekutu/NICA untuk menyerahkan senjata."
       },
       {
-        nama: "CUT NYAK DIEN",
-        svg: `<svg class="hero-svg-large" viewBox="0 0 200 220">
-                <circle cx="100" cy="110" r="85" fill="#FADBD8" />
-                <circle cx="100" cy="65" r="30" fill="#2C3E50" />
-                <ellipse cx="100" cy="115" rx="45" ry="50" fill="#F5CBA7" stroke="#2C3E50" stroke-width="2"/>
-                <circle cx="85" cy="110" r="4" fill="#2C3E50"/><circle cx="115" cy="110" r="4" fill="#2C3E50"/>
-                <path d="M 40 165 L 160 165 L 170 210 L 30 210 Z" fill="#E74C3C" stroke="#2C3E50" stroke-width="2"/>
-              </svg>`
+        nama: "R.A. KARTINI",
+        img: "https://cdni.iconscout.com/illustration/premium/thumb/ra-kartini-illustration-download-in-svg-png-gif-file-formats--indonesian-hero-women-empowerment-pack-people-illustrations-6111164.png?f=webp&w=300",
+        desc: "<b>Tahun:</b> 1899 - 1904<br><b>Latar Belakang:</b> Diskriminasi & ketimpangan hak bagi kaum perempuan Jawa, khususnya tradisi pingitan."
+      },
+      {
+        nama: "CUT NYAK DHIEN",
+        img: "https://cdni.iconscout.com/illustration/premium/thumb/cut-nyak-dhien-illustration-download-in-svg-png-gif-file-formats--indonesian-hero-national-heroes-pack-people-illustrations-6111168.png?f=webp&w=300",
+        desc: "<b>Tahun:</b> 1873 - 1905<br><b>Latar Belakang:</b> Agresi militer Belanda yang ingin menguasai tanah Aceh & gugurnya suami pertamanya."
       }
     ];
 
@@ -406,7 +435,9 @@
     function nextHero() {
       currentHeroIndex = (currentHeroIndex + 1) % heroesList.length;
       const hero = heroesList[currentHeroIndex];
-      document.getElementById('hero-display').innerHTML = hero.svg + `<div class="hero-name-tag" id="hero-name">${hero.nama}</div>`;
+      document.getElementById('hero-img').src = hero.img;
+      document.getElementById('hero-name').innerText = hero.nama;
+      document.getElementById('hero-desc').innerHTML = hero.desc;
     }
 
     // SWITCH TAB
@@ -414,31 +445,37 @@
       document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
       document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
 
-      if(tab === 'materi') {
+      if(tab === 'tujuan') {
         document.querySelectorAll('.tab-btn')[0].classList.add('active');
-        document.getElementById('materi-tab').classList.add('active');
-      } else {
+        document.getElementById('tujuan-tab').classList.add('active');
+      } else if(tab === 'materi') {
         document.querySelectorAll('.tab-btn')[1].classList.add('active');
+        document.getElementById('materi-tab').classList.add('active');
+      } else if(tab === 'nilai') {
+        document.querySelectorAll('.tab-btn')[2].classList.add('active');
+        document.getElementById('nilai-tab').classList.add('active');
+      } else {
+        document.querySelectorAll('.tab-btn')[3].classList.add('active');
         document.getElementById('kuis-tab').classList.add('active');
       }
     }
 
-    // LOGIKA KUIS
+    // SOAL KUIS DARI PDF
     const questions = [
       {
-        q: "Siapakah sosok yang dinamakan Pahlawan?",
-        options: ["Orang yang berjasa membela dan memperjuangkan kemerdekaan bangsa", "Orang yang bekerja mencari keuntungan sendiri", "Orang yang tidak peduli dengan lingkungan sekitar", "Orang yang sering berkelahi"],
-        answer: 0
-      },
-      {
-        q: "Apa latar belakang utama para pahlawan melakukan perlawanan?",
-        options: ["Ingin menjadi terkenal", "Melawan penderitaan rakyat akibat penjajahan", "Ingin menguasai wilayah lain", "Sekadar mengisi waktu luang"],
+        q: "Taktik perang yang digunakan oleh Pangeran Diponegoro untuk melawan pasukan Belanda adalah...",
+        options: ["Perang terbuka di lapangan luas", "Perang gerilya", "Perundingan damai", "Penyerangan dari jalur laut"],
         answer: 1
       },
       {
-        q: "Berikut ini yang merupakan contoh nilai perjuangan pahlawan adalah...",
-        options: ["Mudah menyerah jika ada tugas susah", "Sering membeda-bedakan teman", "Keberanian, cinta tanah air, dan pantang menyerah", "Tidak mau bekerja sama"],
-        answer: 2
+        q: "Penyebab terjadinya pertempuran sengit di Surabaya pada tanggal 10 November 1945 adalah...",
+        options: ["Belanda membakar rumah warga", "Rakyat Surabaya menolak perintah Sekutu untuk menyerahkan senjata", "Perebutan wilayah perkebunan", "Penangkapan Pangeran Diponegoro"],
+        answer: 1
+      },
+      {
+        q: "Bung Tomo membakar semangat para pejuang Surabaya melalui...",
+        options: ["Selebaran kertas dari udara", "Pidato yang disiarkan di radio", "Surat kabar harian", "Pesan rahasia di dalam hutan"],
+        answer: 1
       }
     ];
 
@@ -488,7 +525,7 @@
 
     function showFinalScore() {
       document.getElementById('quiz-box-content').innerHTML = `
-        <div style="text-align:center; padding:30px;">
+        <div style="text-align:center; padding:20px;">
           <i class="fas fa-trophy fa-4x" style="color:#F1C40F; margin-bottom:10px;"></i>
           <h2 style="font-family:'Fredoka One'; font-size:2rem; color:var(--primary);">KUIS SELESAI!</h2>
           <p style="font-weight:bold; margin-top:10px;">Skor Akhir Kamu:</p>
@@ -505,7 +542,6 @@
       loadQuestion();
     }
 
-    // Init
     loadQuestion();
   </script>
 </body>
