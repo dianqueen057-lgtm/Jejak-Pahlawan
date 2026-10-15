@@ -1,547 +1,512 @@
 #Jejak Sang Pahlawan
-<!DOCTYPE html>
 <html lang="id">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Jejak Sang Pahlawan - Flipbook 5D SD Kelas 6</title>
+  <title>Misi Pahlawan - Media Pembelajaran Laptop SD Kelas 6</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  
   <style>
     :root {
-      --primary-color: #d9534f;
-      --secondary-color: #f39c12;
-      --bg-gradient: linear-gradient(135deg, #1a2a6c 0%, #b21f1f 50%, #fdbb2d 100%);
-      --card-bg: #ffffff;
-      --text-color: #2c3e50;
-      --shadow-5d: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-    }
-
-    [data-theme="dark"] {
+      --primary: #FF4757;
+      --secondary: #FFA502;
+      --accent: #2ED573;
+      --dark: #2F3542;
       --bg-gradient: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
-      --card-bg: #1e272e;
-      --text-color: #f1f2f6;
     }
 
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      font-family: 'Comic Sans MS', 'Fredoka', 'Poppins', sans-serif;
+      font-family: 'Poppins', sans-serif;
     }
 
     body {
       background: var(--bg-gradient);
       min-height: 100vh;
+      color: var(--dark);
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+    }
+
+    /* HEADER LAPTOP */
+    header {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(15px);
+      padding: 12px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .logo-title {
+      font-family: 'Fredoka One', cursive;
+      font-size: 1.8rem;
+      color: #FFF;
+      text-shadow: 2px 2px 0px var(--primary);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .btn-game {
+      background: var(--secondary);
+      color: #fff;
+      border: none;
+      padding: 10px 22px;
+      border-radius: 25px;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 4px 0px #d35400;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-game:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 0px #d35400;
+    }
+
+    /* LAYOUT HORISONTAL KHUSUS LAPTOP (2 KOLOM) */
+    .laptop-container {
+      display: grid;
+      grid-template-columns: 380px 1fr;
+      gap: 25px;
+      max-width: 1300px;
+      width: 95%;
+      margin: 20px auto;
+      height: calc(100vh - 110px);
+    }
+
+    /* PANEL KIRI: ANIMASI PAHLAWAN BERGERAK */
+    .left-panel {
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 25px;
+      padding: 25px;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
-      color: var(--text-color);
-      overflow-x: hidden;
-      padding: 20px;
+      justify-content: space-between;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+      border: 4px solid #FFF;
+      text-align: center;
     }
 
-    /* Floating Toolbar Header */
-    .top-toolbar {
-      position: fixed;
-      top: 15px;
+    .panel-title {
+      font-family: 'Fredoka One', cursive;
+      color: var(--primary);
+      font-size: 1.5rem;
+    }
+
+    /* CAROUSEL / CARDS ANIMASI PAHLAWAN */
+    .hero-display-box {
+      width: 100%;
+      background: #FFF8E7;
+      border: 3px dashed var(--secondary);
+      border-radius: 20px;
+      padding: 15px;
+      animation: float 4s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-10px) rotate(1deg); }
+    }
+
+    .hero-svg-large {
+      width: 100%;
+      height: 200px;
+    }
+
+    .hero-name-tag {
+      font-family: 'Fredoka One', cursive;
+      font-size: 1.2rem;
+      color: var(--dark);
+      margin-top: 10px;
+      background: #FFF;
+      padding: 6px 15px;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    }
+
+    /* PANEL KANAN: KONTEN MATERI & KUIS */
+    .right-panel {
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 25px;
+      padding: 25px 30px;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+      border: 4px solid #FFF;
       display: flex;
-      gap: 10px;
-      background: rgba(255, 255, 255, 0.25);
-      backdrop-filter: blur(12px);
-      padding: 10px 20px;
-      border-radius: 30px;
-      box-shadow: 0 8px 25px rgba(0,0,0,0.3);
-      z-index: 1000;
-      flex-wrap: wrap;
-      justify-content: center;
+      flex-direction: column;
+      overflow-y: auto;
     }
 
-    .tool-btn {
-      background: #ffffff;
+    .nav-tabs {
+      display: flex;
+      gap: 15px;
+      margin-bottom: 20px;
+      border-bottom: 2px solid #E4E7EB;
+      padding-bottom: 12px;
+    }
+
+    .tab-btn {
+      background: #E4E7EB;
       border: none;
-      padding: 8px 16px;
+      padding: 12px 25px;
       border-radius: 20px;
+      font-weight: 700;
       cursor: pointer;
-      font-weight: bold;
-      color: var(--primary-color);
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      transition: all 0.3s ease;
-      font-size: 0.85rem;
+      font-size: 1rem;
+      transition: all 0.3s;
     }
 
-    .tool-btn:hover {
-      transform: translateY(-3px) scale(1.05);
-      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    .tab-btn.active {
+      background: var(--primary);
+      color: #FFF;
+      box-shadow: 0 5px 15px rgba(255, 71, 87, 0.4);
     }
 
-    /* 5D Perspective Book Container */
-    .viewport-3d {
-      perspective: 2000px;
-      width: 100%;
-      max-width: 950px;
-      height: 650px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-top: 50px;
-    }
-
-    .book {
-      width: 100%;
-      height: 100%;
-      position: relative;
-      transform-style: preserve-3d;
-      transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
-      box-shadow: var(--shadow-5d);
-      border-radius: 20px;
-    }
-
-    .page {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      background-color: var(--card-bg);
-      border-radius: 20px;
-      padding: 25px 35px;
+    .tab-content {
       display: none;
+      height: 100%;
+    }
+
+    .tab-content.active {
+      display: flex;
       flex-direction: column;
       justify-content: space-between;
-      backface-visibility: hidden;
-      border: 4px solid #f1c40f;
-      overflow-y: auto;
-      transform-origin: left center;
-      animation: flipIn 0.6s ease-out forwards;
     }
 
-    .page.active {
-      display: flex;
-    }
-
-    @keyframes flipIn {
-      from { transform: rotateY(-20deg) scale(0.95); opacity: 0; }
-      to { transform: rotateY(0deg) scale(1); opacity: 1; }
-    }
-
-    h1, h2 {
-      text-align: center;
-      color: var(--primary-color);
-      text-shadow: 1px 2px 4px rgba(0,0,0,0.1);
-      margin-bottom: 12px;
-    }
-
-    .grid-2 {
+    /* CARDS MATERI LANSCAPE */
+    .ppt-horizontal-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: repeat(3, 1fr);
       gap: 15px;
-      margin-top: 10px;
     }
 
-    .card-ppt {
-      background: rgba(217, 83, 79, 0.08);
-      border-left: 5px solid var(--primary-color);
-      padding: 12px;
-      border-radius: 10px;
+    .ppt-card {
+      background: #FFF;
+      border-radius: 18px;
+      padding: 18px;
+      border-top: 6px solid var(--primary);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.06);
+    }
+
+    .ppt-card h3 {
+      font-family: 'Fredoka One', cursive;
+      color: var(--primary);
+      font-size: 1.1rem;
+      margin-bottom: 8px;
+    }
+
+    .ppt-card p {
       font-size: 0.9rem;
+      color: #555;
       line-height: 1.4;
     }
 
-    /* Layout LKPD Seperti PDF */
-    .lkpd-canvas {
+    /* KUIS BOX LAPTOP */
+    .quiz-box {
+      background: #FFF8E7;
+      border: 3px dashed var(--secondary);
+      border-radius: 20px;
+      padding: 25px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .quiz-question {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 15px;
+    }
+
+    .options-grid {
       display: grid;
-      grid-template-columns: 240px 1fr;
-      gap: 20px;
-      background: #fff8e7;
-      border: 3px dashed #d9534f;
-      border-radius: 15px;
-      padding: 15px;
-      color: #333;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
     }
 
-    .hero-avatar-box {
-      background: #ffffff;
-      border: 2px solid #f39c12;
+    .option-btn {
+      background: #FFF;
+      border: 2px solid #E4E7EB;
       border-radius: 12px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 10px;
-      text-align: center;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    }
-
-    .hero-avatar-box svg {
-      width: 160px;
-      height: 180px;
-    }
-
-    .hero-name-badge {
-      background: #d9534f;
-      color: white;
-      padding: 6px 12px;
-      border-radius: 15px;
-      font-weight: bold;
-      font-size: 0.85rem;
-      margin-top: 8px;
-      width: 100%;
-    }
-
-    .lkpd-form {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .field-box {
-      background: #ffffff;
-      border: 1px solid #e0e0e0;
-      border-radius: 8px;
-      padding: 8px 12px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-    }
-
-    .field-box label {
-      display: block;
-      font-size: 0.8rem;
-      font-weight: bold;
-      color: #d9534f;
-      margin-bottom: 4px;
-    }
-
-    .field-box input, .field-box textarea {
-      width: 100%;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      padding: 6px 10px;
-      font-size: 0.85rem;
-      font-family: inherit;
-    }
-
-    /* Controls */
-    .controls {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-      margin-top: 15px;
-      background: rgba(255, 255, 255, 0.95);
-      padding: 10px 25px;
-      border-radius: 25px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-    }
-
-    .nav-btn {
-      background: var(--primary-color);
-      color: white;
-      border: none;
-      padding: 8px 18px;
-      border-radius: 20px;
+      padding: 12px 18px;
+      font-size: 0.95rem;
+      font-weight: 600;
       cursor: pointer;
-      font-weight: bold;
-      transition: background 0.3s;
+      text-align: left;
+      transition: all 0.2s;
     }
 
-    .nav-btn:disabled {
-      background: #ccc;
-      cursor: not-allowed;
+    .option-btn:hover {
+      border-color: var(--secondary);
+      background: #FFFBF0;
     }
 
-    .random-btn {
-      background: #27ae60;
-      color: white;
-      border: none;
-      padding: 8px 15px;
-      border-radius: 20px;
-      cursor: pointer;
-      font-weight: bold;
-      font-size: 0.85rem;
-      margin-top: 10px;
-      transition: transform 0.2s;
+    .option-btn.correct {
+      background: #2ED573 !important;
+      color: #FFF !important;
+      border-color: #26AF5F !important;
     }
 
-    .random-btn:hover {
-      transform: scale(1.05);
+    .option-btn.wrong {
+      background: #FF4757 !important;
+      color: #FFF !important;
+      border-color: #D63031 !important;
     }
 
-    @media print {
-      .top-toolbar, .controls, .nav-btn, .random-btn { display: none !important; }
-      .viewport-3d, .book, .page { height: auto !important; position: static !important; display: block !important; border: none !important; }
+    @media (max-width: 900px) {
+      .laptop-container { grid-template-columns: 1fr; height: auto; }
+      .ppt-horizontal-grid { grid-template-columns: 1fr; }
+      .options-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Floating Top Toolbar -->
-  <div class="top-toolbar">
-    <button class="tool-btn" onclick="toggleTheme()"><i class="fas fa-moon"></i> Tema</button>
-    <button class="tool-btn" onclick="speakCurrentPage()"><i class="fas fa-volume-up"></i> Baca Materi</button>
-    <button class="tool-btn" onclick="zoomBook()"><i class="fas fa-search-plus"></i> Zoom 5D</button>
-    <button class="tool-btn" onclick="cetakLKPD()"><i class="fas fa-print"></i> Cetak/Simpan PDF</button>
-  </div>
+  <!-- HEADER -->
+  <header>
+    <div class="logo-title">
+      <i class="fas fa-laptop-code"></i> MISI PAHLAWAN (VERSI LAPTOP)
+    </div>
+    <button class="btn-game" onclick="restartQuiz()"><i class="fas fa-redo"></i> Ulangi Kuis</button>
+  </header>
 
-  <!-- Main 5D Flipbook Container -->
-  <div class="viewport-3d" id="viewport">
-    <div class="book" id="book">
+  <!-- CONTAINER TAMPILAN HORISONAL (LAPTOP) -->
+  <div class="laptop-container">
+    
+    <!-- PANEL KIRI: AVATAR PAHLAWAN BERGERAK -->
+    <div class="left-panel">
+      <h2 class="panel-title">🎮 TOKOH PAHLAWAN</h2>
       
-      <!-- COVER PAGE -->
-      <div class="page active">
-        <div style="text-align: center; padding: 20px; background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%); border-radius: 15px; color: #333;">
-          <i class="fas fa-award fa-4x" style="color: #f1c40f; margin-bottom: 10px;"></i>
-          <h1>JEJAK SANG PAHLAWAN</h1>
-          <p><strong>Media Belajar Digital Interaktif Flipbook 5D</strong></p>
-          <p>Khusus Kelas 6 Sekolah Dasar</p>
-        </div>
-        <div style="text-align: center; margin-top: 20px;">
-          <p>Mari menelusuri sejarah perjuangan para pahlawan bangsa dan isi LKPD digital secara mandiri!</p>
-          <br>
-          <button class="nav-btn" onclick="nextPage()">Buka Flipbook <i class="fas fa-arrow-right"></i></button>
-        </div>
-        <p style="text-align: center; font-size: 0.8rem; color: #888;">Gunakan navigasi di bawah untuk memilih halaman</p>
+      <div class="hero-display-box" id="hero-display">
+        <!-- SVG Imam Bonjol -->
+        <svg class="hero-svg-large" viewBox="0 0 200 220">
+          <circle cx="100" cy="110" r="85" fill="#FCF3CF" />
+          <path d="M 40 80 Q 100 10 160 80 Q 100 60 40 80 Z" fill="#FFFFFF" stroke="#2C3E50" stroke-width="3"/>
+          <ellipse cx="100" cy="115" rx="45" ry="50" fill="#F5CBA7" stroke="#2C3E50" stroke-width="2"/>
+          <circle cx="85" cy="110" r="4" fill="#2C3E50"/><circle cx="115" cy="110" r="4" fill="#2C3E50"/>
+          <path d="M 85 145 Q 100 180 115 145 Z" fill="#2C3E50"/>
+          <path d="M 50 165 L 150 165 L 160 210 L 40 210 Z" fill="#FFFFFF" stroke="#2C3E50" stroke-width="2"/>
+        </svg>
+        <div class="hero-name-tag" id="hero-name">TUANKU IMAM BONJOL</div>
       </div>
 
-      <!-- PAGE 1: Materi Ringkas PPT Part 1 -->
-      <div class="page">
-        <h2><i class="fas fa-book-open"></i> Ringkasan Materi (Part 1)</h2>
-        <div class="grid-2">
-          <div class="card-ppt">
-            <h3><i class="fas fa-flag" style="color:#f39c12"></i> 1. Pengertian Pahlawan</h3>
-            <p>Pahlawan adalah sosok yang berjasa memperjuangkan kemerdekaan dengan keberanian, semangat, pengorbanan, dan cinta tanah air.</p>
-          </div>
-          <div class="card-ppt">
-            <h3><i class="fas fa-history" style="color:#f39c12"></i> 2. Latar Belakang Perjuangan</h3>
-            <p>Penjajahan menyebabkan rakyat menderita dan kehilangan kebebasan. Hal ini menggerakkan pahlawan untuk bersatu melawan musuh.</p>
-          </div>
-        </div>
-        <div class="card-ppt" style="margin-top: 15px;">
-          <h3><i class="fas fa-search-location" style="color:#f39c12"></i> 3. Cara Menelusuri Sejarah</h3>
-          <p>Kisah pahlawan dapat dipelajari dari buku sejarah, gambar, museum, cerita rakyat, dan media digital terpercaya.</p>
-        </div>
-        <div style="text-align: right; font-size: 0.8rem; color:#888;">Halaman 1 dari 3</div>
+      <button class="btn-game" style="background: var(--accent); width: 100%; justify-content: center;" onclick="nextHero()">
+        🔄 Ganti Karakter Pahlawan
+      </button>
+    </div>
+
+    <!-- PANEL KANAN: MATERI & KUIS -->
+    <div class="right-panel">
+      
+      <div class="nav-tabs">
+        <button class="tab-btn active" onclick="switchTab('materi')">📖 Ringkasan Materi</button>
+        <button class="tab-btn" onclick="switchTab('kuis')">🏆 Kuis Interaktif</button>
       </div>
 
-      <!-- PAGE 2: Materi Ringkas PPT Part 2 -->
-      <div class="page">
-        <h2><i class="fas fa-star"></i> Nilai-Nilai Perjuangan</h2>
-        <p style="font-size: 0.9rem; margin-bottom: 10px; text-align:center;">Sikap teladan pahlawan yang wajib diterapkan sehari-hari:</p>
-        
-        <div class="grid-2">
-          <div class="card-ppt"><strong>Cinta Tanah Air:</strong> Bangga & peduli terhadap bangsa Indonesia.</div>
-          <div class="card-ppt"><strong>Keberanian:</strong> Berani menghadapi kesulitan & membela kebenaran.</div>
-          <div class="card-ppt"><strong>Pantang Menyerah:</strong> Tetap berusaha meskipun ada hambatan.</div>
-          <div class="card-ppt"><strong>Persatuan:</strong> Bekerja sama dan menjaga kerukunan.</div>
+      <!-- TAB 1: MATERI (3 CARDS HORISONTAL) -->
+      <div id="materi-tab" class="tab-content active">
+        <div class="ppt-horizontal-grid">
+          
+          <div class="ppt-card">
+            <h3><i class="fas fa-star"></i> Pengertian Pahlawan</h3>
+            <p>Pahlawan adalah sosok yang berjasa memperjuangkan kemerdekaan dan membela bangsa dengan keberanian & pengorbanan.</p>
+          </div>
+
+          <div class="ppt-card" style="border-top-color: var(--secondary);">
+            <h3><i class="fas fa-history"></i> Latar Belakang Perjuangan</h3>
+            <p>Penjajahan menyebabkan rakyat menderita. Keadaan ini mendorong para tokoh bersatu melakukan perlawanan membela tanah air.</p>
+          </div>
+
+          <div class="ppt-card" style="border-top-color: var(--accent);">
+            <h3><i class="fas fa-heart"></i> Nilai-Nilai Teladan</h3>
+            <p>Sikap luhur yang wajib diteladani: <strong>Cinta Tanah Air, Keberanian, Pantang Menyerah, dan Persatuan</strong>.</p>
+          </div>
+
         </div>
-        <div style="text-align: right; font-size: 0.8rem; color:#888; margin-top: 20px;">Halaman 2 dari 3</div>
+
+        <div style="background: #E8F8F5; padding: 15px; border-radius: 15px; margin-top: 15px; border-left: 5px solid var(--accent);">
+          <strong>💡 Tips Belajar:</strong> Setelah membaca ketiga poin di atas, klik tab <strong>"🏆 Kuis Interaktif"</strong> di atas untuk menguji pemahamanmu!
+        </div>
       </div>
 
-      <!-- PAGE 3: LKPD Digital Canvas (Desain Persis PDF) -->
-      <div class="page">
-        <h2><i class="fas fa-pen-nib"></i> LKPD Interaktif Siswa</h2>
-        
-        <div class="lkpd-canvas">
-          <!-- Sisi Kiri: Gambar Kartun & Nama Pahlawan -->
-          <div class="hero-avatar-box">
-            <div id="hero-svg-container">
-              <!-- Default SVG Kartun Imam Bonjol (Sesuai PDF) -->
-              <svg viewBox="0 0 200 220">
-                <circle cx="100" cy="110" r="90" fill="#fcf3cf" />
-                <!-- Sorban Putih -->
-                <path d="M 40 80 Q 100 10 160 80 Q 100 60 40 80 Z" fill="#ffffff" stroke="#333" stroke-width="3"/>
-                <path d="M 45 75 Q 100 40 155 75" fill="none" stroke="#ccc" stroke-width="2"/>
-                <!-- Muka -->
-                <ellipse cx="100" cy="115" rx="45" ry="50" fill="#f5cba7" stroke="#333" stroke-width="2"/>
-                <!-- Mata & Alis -->
-                <circle cx="85" cy="110" r="4" fill="#333"/>
-                <circle cx="115" cy="110" r="4" fill="#333"/>
-                <!-- Janggut Hitam -->
-                <path d="M 85 145 Q 100 180 115 145 Z" fill="#2c3e50"/>
-                <!-- Baju Gamis Putih -->
-                <path d="M 50 165 L 150 165 L 160 210 L 40 210 Z" fill="#ffffff" stroke="#333" stroke-width="2"/>
-              </svg>
+      <!-- TAB 2: KUIS INTERAKTIF -->
+      <div id="kuis-tab" class="tab-content">
+        <div class="quiz-box" id="quiz-box-content">
+          <div>
+            <div style="display:flex; justify-content:space-between; margin-bottom:12px; font-weight:bold;">
+              <span id="question-number">Soal 1 / 3</span>
+              <span id="score-display" style="color: var(--primary);">Skor: 0</span>
             </div>
-            <div class="hero-name-badge" id="display-hero-name">TUANKU IMAM BONJOL</div>
-            <button class="random-btn" onclick="acakPahlawan()"><i class="fas fa-dice"></i> 🎲 Acak Pahlawan</button>
+
+            <div class="quiz-question" id="question-text">
+              Siapakah sosok yang dinamakan Pahlawan?
+            </div>
           </div>
 
-          <!-- Sisi Kanan: Form Isian LKPD (Kosong Siap Diisi) -->
-          <div class="lkpd-form">
-            <div class="field-box">
-              <label>1. Tempat & Tanggal Lahir:</label>
-              <input type="text" id="input-ttl" placeholder="Ketik tempat & tanggal lahir pahlawan di sini...">
-            </div>
-            <div class="field-box">
-              <label>2. Tahun Perlawanan:</label>
-              <input type="text" id="input-tahun" placeholder="Ketik tahun masa perjuangan...">
-            </div>
-            <div class="field-box">
-              <label>3. Latar Belakang Perlawanan:</label>
-              <textarea id="input-latar" rows="2" placeholder="Tuliskan latar belakang perlawanan..."></textarea>
-            </div>
-            <div class="field-box">
-              <label>4. Cerita Perlawanan:</label>
-              <textarea id="input-cerita" rows="3" placeholder="Ceritakan kisah perlawanannya..."></textarea>
-            </div>
+          <div class="options-grid" id="options-container">
+            <!-- Option buttons rendered via JS -->
           </div>
         </div>
-
-        <div style="text-align: center; margin-top: 10px;">
-          <button class="nav-btn" style="background:#27ae60;" onclick="simpanJawaban()"><i class="fas fa-save"></i> Simpan Hasil LKPD</button>
-        </div>
-        <div style="text-align: right; font-size: 0.8rem; color:#888;">Halaman 3 dari 3</div>
       </div>
 
     </div>
-  </div>
 
-  <!-- Bottom Page Navigation Controls -->
-  <div class="controls">
-    <button class="nav-btn" id="prevBtn" onclick="prevPage()"><i class="fas fa-chevron-left"></i> SEBELUMNYA</button>
-    <span id="pageIndicator" style="font-weight: bold;">Halaman 1 / 4</span>
-    <button class="nav-btn" id="nextBtn" onclick="nextPage()">SELANJUTNYA <i class="fas fa-chevron-right"></i></button>
   </div>
 
   <script>
-    let currentPage = 0;
-    const pages = document.querySelectorAll('.page');
-    const pageIndicator = document.getElementById('pageIndicator');
-    const book = document.getElementById('book');
-    let isZoomed = false;
-
-    // Daftar Pahlawan Kartun (Termasuk Imam Bonjol & Bung Tomo sesuai PDF)
-    const listPahlawan = [
+    // CAROUSEL PAHLAWAN PANEL KIRI
+    const heroesList = [
       {
         nama: "TUANKU IMAM BONJOL",
-        svg: `<svg viewBox="0 0 200 220">
-                <circle cx="100" cy="110" r="90" fill="#fcf3cf" />
-                <path d="M 40 80 Q 100 10 160 80 Q 100 60 40 80 Z" fill="#ffffff" stroke="#333" stroke-width="3"/>
-                <ellipse cx="100" cy="115" rx="45" ry="50" fill="#f5cba7" stroke="#333" stroke-width="2"/>
-                <circle cx="85" cy="110" r="4" fill="#333"/><circle cx="115" cy="110" r="4" fill="#333"/>
-                <path d="M 85 145 Q 100 180 115 145 Z" fill="#2c3e50"/>
-                <path d="M 50 165 L 150 165 L 160 210 L 40 210 Z" fill="#ffffff" stroke="#333" stroke-width="2"/>
+        svg: `<svg class="hero-svg-large" viewBox="0 0 200 220">
+                <circle cx="100" cy="110" r="85" fill="#FCF3CF" />
+                <path d="M 40 80 Q 100 10 160 80 Q 100 60 40 80 Z" fill="#FFFFFF" stroke="#2C3E50" stroke-width="3"/>
+                <ellipse cx="100" cy="115" rx="45" ry="50" fill="#F5CBA7" stroke="#2C3E50" stroke-width="2"/>
+                <circle cx="85" cy="110" r="4" fill="#2C3E50"/><circle cx="115" cy="110" r="4" fill="#2C3E50"/>
+                <path d="M 85 145 Q 100 180 115 145 Z" fill="#2C3E50"/>
+                <path d="M 50 165 L 150 165 L 160 210 L 40 210 Z" fill="#FFFFFF" stroke="#2C3E50" stroke-width="2"/>
               </svg>`
       },
       {
         nama: "BUNG TOMO",
-        svg: `<svg viewBox="0 0 200 220">
-                <circle cx="100" cy="110" r="90" fill="#d5f5e3" />
-                <!-- Peci / Topi Hijau Veteran -->
-                <path d="M 50 70 L 150 70 L 140 40 L 60 40 Z" fill="#1e8449" stroke="#333" stroke-width="2"/>
-                <ellipse cx="100" cy="115" rx="45" ry="50" fill="#f5cba7" stroke="#333" stroke-width="2"/>
-                <circle cx="85" cy="110" r="4" fill="#333"/><circle cx="115" cy="110" r="4" fill="#333"/>
-                <!-- Tangan Menunjuk -->
-                <path d="M 140 120 L 170 80 L 180 90 Z" fill="#f5cba7" stroke="#333" stroke-width="2"/>
-                <!-- Seragam Hijau -->
-                <path d="M 40 165 L 160 165 L 170 210 L 30 210 Z" fill="#27ae60" stroke="#333" stroke-width="2"/>
+        svg: `<svg class="hero-svg-large" viewBox="0 0 200 220">
+                <circle cx="100" cy="110" r="85" fill="#D5F5E3" />
+                <path d="M 50 70 L 150 70 L 140 40 L 60 40 Z" fill="#1E8449" stroke="#2C3E50" stroke-width="2"/>
+                <ellipse cx="100" cy="115" rx="45" ry="50" fill="#F5CBA7" stroke="#2C3E50" stroke-width="2"/>
+                <circle cx="85" cy="110" r="4" fill="#2C3E50"/><circle cx="115" cy="110" r="4" fill="#2C3E50"/>
+                <path d="M 40 165 L 160 165 L 170 210 L 30 210 Z" fill="#27AE60" stroke="#2C3E50" stroke-width="2"/>
               </svg>`
       },
       {
-        nama: "PANGERAN DIPONEGORO",
-        svg: `<svg viewBox="0 0 200 220">
-                <circle cx="100" cy="110" r="90" fill="#ebdef0" />
-                <path d="M 30 85 Q 100 20 170 85 Z" fill="#8e44ad" stroke="#333" stroke-width="2"/>
-                <ellipse cx="100" cy="115" rx="45" ry="50" fill="#f5cba7" stroke="#333" stroke-width="2"/>
-                <circle cx="85" cy="110" r="4" fill="#333"/><circle cx="115" cy="110" r="4" fill="#333"/>
-                <path d="M 40 165 L 160 165 L 160 210 L 40 210 Z" fill="#8e44ad" stroke="#333" stroke-width="2"/>
-              </svg>`
-      },
-      {
-        nama: "R.A. KARTINI",
-        svg: `<svg viewBox="0 0 200 220">
-                <circle cx="100" cy="110" r="90" fill="#fdebd0" />
-                <!-- Sanggul -->
-                <circle cx="100" cy="60" r="35" fill="#2c3e50" />
-                <ellipse cx="100" cy="115" rx="42" ry="48" fill="#f5cba7" stroke="#333" stroke-width="2"/>
-                <circle cx="85" cy="110" r="4" fill="#333"/><circle cx="115" cy="110" r="4" fill="#333"/>
-                <!-- Kebaya -->
-                <path d="M 45 160 L 155 160 L 165 210 L 35 210 Z" fill="#e74c3c" stroke="#333" stroke-width="2"/>
+        nama: "CUT NYAK DIEN",
+        svg: `<svg class="hero-svg-large" viewBox="0 0 200 220">
+                <circle cx="100" cy="110" r="85" fill="#FADBD8" />
+                <circle cx="100" cy="65" r="30" fill="#2C3E50" />
+                <ellipse cx="100" cy="115" rx="45" ry="50" fill="#F5CBA7" stroke="#2C3E50" stroke-width="2"/>
+                <circle cx="85" cy="110" r="4" fill="#2C3E50"/><circle cx="115" cy="110" r="4" fill="#2C3E50"/>
+                <path d="M 40 165 L 160 165 L 170 210 L 30 210 Z" fill="#E74C3C" stroke="#2C3E50" stroke-width="2"/>
               </svg>`
       }
     ];
 
-    function updatePages() {
-      pages.forEach((page, index) => {
-        if (index === currentPage) {
-          page.classList.add('active');
-        } else {
-          page.classList.remove('active');
-        }
+    let currentHeroIndex = 0;
+
+    function nextHero() {
+      currentHeroIndex = (currentHeroIndex + 1) % heroesList.length;
+      const hero = heroesList[currentHeroIndex];
+      document.getElementById('hero-display').innerHTML = hero.svg + `<div class="hero-name-tag" id="hero-name">${hero.nama}</div>`;
+    }
+
+    // SWITCH TAB
+    function switchTab(tab) {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+
+      if(tab === 'materi') {
+        document.querySelectorAll('.tab-btn')[0].classList.add('active');
+        document.getElementById('materi-tab').classList.add('active');
+      } else {
+        document.querySelectorAll('.tab-btn')[1].classList.add('active');
+        document.getElementById('kuis-tab').classList.add('active');
+      }
+    }
+
+    // LOGIKA KUIS
+    const questions = [
+      {
+        q: "Siapakah sosok yang dinamakan Pahlawan?",
+        options: ["Orang yang berjasa membela dan memperjuangkan kemerdekaan bangsa", "Orang yang bekerja mencari keuntungan sendiri", "Orang yang tidak peduli dengan lingkungan sekitar", "Orang yang sering berkelahi"],
+        answer: 0
+      },
+      {
+        q: "Apa latar belakang utama para pahlawan melakukan perlawanan?",
+        options: ["Ingin menjadi terkenal", "Melawan penderitaan rakyat akibat penjajahan", "Ingin menguasai wilayah lain", "Sekadar mengisi waktu luang"],
+        answer: 1
+      },
+      {
+        q: "Berikut ini yang merupakan contoh nilai perjuangan pahlawan adalah...",
+        options: ["Mudah menyerah jika ada tugas susah", "Sering membeda-bedakan teman", "Keberanian, cinta tanah air, dan pantang menyerah", "Tidak mau bekerja sama"],
+        answer: 2
+      }
+    ];
+
+    let currentQ = 0;
+    let score = 0;
+
+    function loadQuestion() {
+      const q = questions[currentQ];
+      document.getElementById('question-number').innerText = `Soal ${currentQ + 1} / ${questions.length}`;
+      document.getElementById('question-text').innerText = q.q;
+
+      const optsContainer = document.getElementById('options-container');
+      optsContainer.innerHTML = '';
+
+      q.options.forEach((opt, index) => {
+        const btn = document.createElement('button');
+        btn.className = 'option-btn';
+        btn.innerText = `${String.fromCharCode(65 + index)}. ${opt}`;
+        btn.onclick = () => checkAnswer(index, btn);
+        optsContainer.appendChild(btn);
       });
-      pageIndicator.innerText = `Halaman ${currentPage + 1} / ${pages.length}`;
-      document.getElementById('prevBtn').disabled = (currentPage === 0);
-      document.getElementById('nextBtn').disabled = (currentPage === pages.length - 1);
     }
 
-    function nextPage() {
-      if (currentPage < pages.length - 1) {
-        currentPage++;
-        updatePages();
-      }
-    }
+    function checkAnswer(selectedIndex, btn) {
+      const q = questions[currentQ];
+      const allBtns = document.querySelectorAll('.option-btn');
+      allBtns.forEach(b => b.disabled = true);
 
-    function prevPage() {
-      if (currentPage > 0) {
-        currentPage--;
-        updatePages();
-      }
-    }
-
-    // Fungsi Acak Pahlawan: Mengganti Gambar & Nama, serta Menolak Kosongkan Isian LKPD
-    function acakPahlawan() {
-      const randomIndex = Math.floor(Math.random() * listPahlawan.length);
-      const selected = listPahlawan[randomIndex];
-
-      // Update Gambar Kartun & Nama Pahlawan
-      document.getElementById('hero-svg-container').innerHTML = selected.svg;
-      document.getElementById('display-hero-name').innerText = selected.nama;
-
-      // Kosongkan seluruh form LKPD agar siswa mengisinya sendiri
-      document.getElementById('input-ttl').value = '';
-      document.getElementById('input-tahun').value = '';
-      document.getElementById('input-latar').value = '';
-      document.getElementById('input-cerita').value = '';
-    }
-
-    function simpanJawaban() {
-      const ttl = document.getElementById('input-ttl').value;
-      if (!ttl) {
-        alert("Silakan isi dulu kolom LKPD sebelum menyimpan!");
-        return;
-      }
-      alert("Jawaban LKPD berhasil disimpan!");
-    }
-
-    function speakCurrentPage() {
-      const text = pages[currentPage].innerText;
-      const utterance = new SpeechSynthesisUtterance(text);
-      utterance.lang = 'id-ID';
-      speechSynthesis.speak(utterance);
-    }
-
-    function toggleTheme() {
-      if (document.body.getAttribute('data-theme') === 'dark') {
-        document.body.removeAttribute('data-theme');
+      if(selectedIndex === q.answer) {
+        btn.classList.add('correct');
+        score += 35;
+        document.getElementById('score-display').innerText = `Skor: ${score}`;
       } else {
-        document.body.setAttribute('data-theme', 'dark');
+        btn.classList.add('wrong');
+        allBtns[q.answer].classList.add('correct');
       }
+
+      setTimeout(() => {
+        currentQ++;
+        if(currentQ < questions.length) {
+          loadQuestion();
+        } else {
+          showFinalScore();
+        }
+      }, 1300);
     }
 
-    function zoomBook() {
-      if (!isZoomed) {
-        book.style.transform = 'scale(1.15)';
-        isZoomed = true;
-      } else {
-        book.style.transform = 'scale(1)';
-        isZoomed = false;
-      }
+    function showFinalScore() {
+      document.getElementById('quiz-box-content').innerHTML = `
+        <div style="text-align:center; padding:30px;">
+          <i class="fas fa-trophy fa-4x" style="color:#F1C40F; margin-bottom:10px;"></i>
+          <h2 style="font-family:'Fredoka One'; font-size:2rem; color:var(--primary);">KUIS SELESAI!</h2>
+          <p style="font-weight:bold; margin-top:10px;">Skor Akhir Kamu:</p>
+          <h1 style="font-size:3.5rem; color:var(--primary); font-family:'Fredoka One';">${score}</h1>
+          <button class="btn-game" style="margin:15px auto 0;" onclick="restartQuiz()">Main Lagi</button>
+        </div>
+      `;
     }
 
-    function cetakLKPD() {
-      window.print();
+    function restartQuiz() {
+      currentQ = 0;
+      score = 0;
+      document.getElementById('score-display').innerText = `Skor: 0`;
+      loadQuestion();
     }
 
-    // Initialize
-    updatePages();
+    // Init
+    loadQuestion();
   </script>
 </body>
 </html>
